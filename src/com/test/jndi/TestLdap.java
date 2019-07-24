@@ -3,8 +3,12 @@
  */
 package com.test.jndi;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
 import javax.naming.directory.BasicAttribute;
 
 import com.test.jndi.entity.InetOrgPerson;
@@ -30,18 +34,22 @@ public class TestLdap {
 //			String testDn = "cn=zhy zabbix,cn=devtest,dc=jump,dc=com";
 //			
 //			// add uid=test,ou=tester,dc=ibm,dc=com
-//			InetOrgPerson addPerson = new InetOrgPerson("z1", "szhy","devtest", "zhy111",testDn);
+//			InetOrgPerson addPerson = new InetOrgPerson("z1", "szhy","devtest", "zhy zabbix",testDn);
 //			ldap.add(addPerson);
 			
 			
 			// search uid=test
 			// specify the LDAP search filter
-			String searchFilter = "cn=zhy zabbix";
+			String searchFilter = "cn= mj";
 			// Specify the Base for the search
-			String searchBase = "dc=jump,dc=com";
+			String searchBase = "ou=People,dc=jump,dc=com";
 			// Specify the attributes to return
-			String returnedAtts[] = { "cn","dc" };
-		    ldap.search(searchFilter,searchBase,returnedAtts);
+//			String returnedAtts[] = {"uid", "userPassword", "displayName", "cn", "sn", "mail", "description" };
+//		    ldap.search(searchFilter,searchBase,returnedAtts);
+		    
+		    Map<String,String> queryParams = new HashMap<>();
+		    queryParams.put("gidNumber", "501");
+		    ldap.searchByAttribute(searchBase, queryParams);
 		   
 		    
 //		    // update cn with new value of "changed name"

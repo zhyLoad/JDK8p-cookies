@@ -4,8 +4,10 @@
 package com.test.jndi;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 import javax.naming.Context;
+import javax.naming.Name;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
@@ -17,6 +19,7 @@ import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.ModificationItem;
 import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
+import javax.naming.ldap.LdapName;
 
 import com.test.jndi.entity.InetOrgPerson;
 import com.test.jndi.entity.LdapConnection;
@@ -60,6 +63,40 @@ public class LdapImpl implements Ldap {
 		}
 		System.out.println("Search complete.");
 	}
+	
+/** 
+* 通过属性搜索LDAP范例  
+* @return 
+*/  
+public void searchByAttribute(String baseDN,Map<String,String> queryAtts) throws NamingException {  
+    SearchControls cons = new SearchControls();  
+    cons.setSearchScope(SearchControls.SUBTREE_SCOPE);  
+    System.out.println("Searching...");
+    Name baseName = new LdapName(baseDN);  
+    Attributes matchAttrs = new BasicAttributes(true);
+    for(Map.Entry<String, String> entity :queryAtts.entrySet()){
+    	 matchAttrs.put(new BasicAttribute(entity.getKey(), entity.getValue()));//指定必须含有sn属性，其值必须是GGG
+    }
+    NamingEnumeration<SearchResult> ne = ds.search(baseName, matchAttrs);  
+    SearchResult entry = null;  
+    for(;ne.hasMore();){  
+       entry = ne.next();  
+		System.out.println(">>>" + entry.getName());
+		// Print out the groups
+		Attributes attrs = entry.getAttributes();
+		if (attrs != null) {
+			for (NamingEnumeration<? extends Attribute> names = attrs
+					.getAll(); names.hasMore();) {
+				Attribute attr = names.next();
+				System.out.println("AttributeID: " + attr.getID());
+				for (NamingEnumeration<?> e = attr.getAll(); e.hasMore();) {
+					System.out.println("Attributes:" + e.next());
+				}
+			}
+		}
+    }
+	System.out.println("Search complete.");
+}
 
 	@Override
 	public void update(String dn,Attribute attr) throws NamingException {
@@ -116,5 +153,6 @@ public class LdapImpl implements Ldap {
 		ds.close();
 		System.out.println("closed.");
 	}
+
 
 }
