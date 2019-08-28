@@ -40,15 +40,16 @@ public class TestLdap {
 			
 			// search uid=test
 			// specify the LDAP search filter
-			String searchFilter = "cn= mj";
-			// Specify the Base for the search
-			String searchBase = "ou=People,dc=jump,dc=com";
-			// Specify the attributes to return
-//			String returnedAtts[] = {"uid", "userPassword", "displayName", "cn", "sn", "mail", "description" };
+//			String searchFilter = "cn=san zhang";
+//			// Specify the Base for the search
+//			String searchBase = "ou=People,dc=jump,dc=com";
+//			// Specify the attributes to return
+//			String returnedAtts[] = {"uid", "userPassword", "displayName", "cn", "sn", "mail", "gidNumber","description","entryDN","User Name","uidNumber"};
 //		    ldap.search(searchFilter,searchBase,returnedAtts);
 		    
 		    Map<String,String> queryParams = new HashMap<>();
-		    queryParams.put("gidNumber", "501");
+		    String searchBase = "ou=Users,ou=Unified Authentication,ou=Startimes,dc=jump,dc=com";
+		    queryParams.put("gidNumber", "504");
 		    ldap.searchByAttribute(searchBase, queryParams);
 		   
 		    

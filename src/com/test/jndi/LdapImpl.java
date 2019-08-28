@@ -38,7 +38,8 @@ public class LdapImpl implements Ldap {
 		System.out.println("Searching...");
 		SearchControls searchCtls = new SearchControls();
 		// Specify the search scope
-		searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+//		searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+		searchCtls.setSearchScope(SearchControls.ONELEVEL_SCOPE);
 		searchCtls.setReturningAttributes(returnedAtts);
 		// Search for objects using the filter
 		NamingEnumeration<SearchResult> entries = ds.search(searchBase,
