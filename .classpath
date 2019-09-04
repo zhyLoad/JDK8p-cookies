@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="libs/axmlprinter-g.jar"/>
 	<classpathentry kind="lib" path="libs/hibernate-validator-5.2.2.Final.jar"/>
 	<classpathentry kind="lib" path="libs/apktool_2.3.4.jar"/>
+	<classpathentry kind="lib" path="libs/commons-codec-1.11.jar"/>
+	<classpathentry kind="lib" path="libs/zookeeper-3.4.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

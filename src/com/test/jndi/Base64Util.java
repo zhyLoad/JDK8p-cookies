@@ -3,6 +3,8 @@
  */
 package com.test.jndi;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 import javax.imageio.stream.FileImageInputStream;
@@ -10,6 +12,7 @@ import javax.imageio.stream.FileImageInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -127,6 +130,9 @@ public static byte[] decode(String str) throws Exception {
     }
     return buf.toByteArray();
 }
+
+
+
 
 	/**
 	 * @param args
