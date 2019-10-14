@@ -6,6 +6,7 @@ package com.test.random.award;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.google.gson.Gson;
 
@@ -21,12 +22,15 @@ public class BigWheelDrawUtilO {
      * @return
      */
     private final static List<WchatLotteryDomainO> initDrawList = new ArrayList<WchatLotteryDomainO>() {{
-        add(new WchatLotteryDomainO(1, "200", 1));//中奖率1/10000000
-        add(new WchatLotteryDomainO(2, "100", 30000));//中奖率30000/10000000
-        add(new WchatLotteryDomainO(3, "50", 300));//中奖率300/10000000
-        add(new WchatLotteryDomainO(4, "30", 30));//中奖率30/10000000
-        add(new WchatLotteryDomainO(5, "20", 26));//中奖率26/10000000
-        add(new WchatLotteryDomainO(6, "10", 909999));//中奖率909999/10000000
+//        add(new WchatLotteryDomainO(1, "200", 1));//中奖率1/10000000
+//        add(new WchatLotteryDomainO(2, "100", 30000));//中奖率30000/10000000
+//        add(new WchatLotteryDomainO(3, "50", 300));//中奖率300/10000000
+//        add(new WchatLotteryDomainO(4, "30", 30));//中奖率30/10000000
+//        add(new WchatLotteryDomainO(5, "20", 26));//中奖率26/10000000
+//        add(new WchatLotteryDomainO(6, "1", 999999));//中奖率909999/10000000
+        add(new WchatLotteryDomainO(1, "200", 20));//中奖率1/10000000
+        add(new WchatLotteryDomainO(2, "100", 30));//中奖率30000/10000000
+        add(new WchatLotteryDomainO(3, "50", 50));//中奖率300/10000000
     }};
 
     /**
@@ -52,6 +56,31 @@ public class BigWheelDrawUtilO {
         }
         return returnobj;
     }
+    
+    /**
+     * 生成奖项
+     * @return
+     */
+    public static WchatLotteryDomainO generateAward1(int maxLimit) {
+    	long random = randomnum(0, maxLimit);
+		int stepTotal = 0;
+		List<String> aList = new ArrayList();
+      //probability ->key 是奖品id ->prod是奖品权重
+		for(WchatLotteryDomainO wchatLotteryDomainO : initDrawList)
+		{
+			int proba = wchatLotteryDomainO.getV();
+			int min = stepTotal;
+			int max = stepTotal + proba;
+			stepTotal = max;
+			//将随机数放进不同的桶
+			if(random>min && random<=max)
+			{
+				return wchatLotteryDomainO;
+			}
+		}
+		
+		return null;
+    }
 
     // 获取2个值之间的随机数
     private static long randomnum(int smin, int smax){
@@ -59,10 +88,19 @@ public class BigWheelDrawUtilO {
             double rand = Math.random();
             return (smin + Math.round(rand * range));
     }
+    
+    
+    public static int getRandom(int min, int max){
+        Random random = new Random();
+        int i = random.nextInt(max) % (max - min + 1) + min;
+        return i;
+    }
 
 
     public static void main(String[] args) {
-        System.out.println(gson.toJson(generateAward(10000000)));//从在0到10000000之间随机抽奖
+//        System.out.println(gson.toJson(generateAward(10000000)));//从在0到10000000之间随机抽奖
+    	System.out.println(getRandom(1,100));
+    	 System.out.println(gson.toJson(generateAward1(100)));//从在0到10000000之间随机抽奖
     }
 
 }
