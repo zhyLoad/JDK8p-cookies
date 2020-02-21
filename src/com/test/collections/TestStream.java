@@ -50,7 +50,14 @@ public class TestStream {
 			this.bbbId = bbbId;
 		}
 		
+		public Relation(Long aaaId) {
+			super();
+			this.aaaId = aaaId;
+		}
 		
+		public String toString(){
+			return "AAA = "+this.aaaId+",BBB = "+this.bbbId;
+		}
 	}
 	
     public static  List<Long> splitIdListByStr(String ids){
@@ -132,7 +139,20 @@ public class TestStream {
 //
 //		System.out.println(relations.size()); 
 		
-		List<Long> a =  splitIdListByStr("");
+//		List<Long> a =  splitIdListByStr("");
+		List<Relation> lll = new ArrayList<>();
+		lll.add(new Relation(23L));
+		lll.add(new Relation(33L));
+		lll.add(new Relation(43L));
+		for(Relation relation : lll){
+			System.out.println(relation.toString());
+		}
+		lll.forEach(relation->{
+			relation.setBbbId(888L);
+		});
+		for(Relation relation : lll){
+			System.out.println(relation.toString());
+		}
 		 
 	}
 

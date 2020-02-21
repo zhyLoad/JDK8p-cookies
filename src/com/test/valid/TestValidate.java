@@ -45,6 +45,14 @@ public class TestValidate {
 	        }
 		 return result;
 	 }
+	 
+	 
+	 public static boolean check(Object a){
+		 if(!a.getClass().getName().equals("java.lang.String")){
+			 return false;
+		 }
+		 return true;
+	 }
 
 
 
@@ -54,14 +62,17 @@ public class TestValidate {
 	public static void main(String[] args) {
 //		String testPhone = "+61-234-567-89-01";
 //		System.out.println(validateInternationalPhoneNumberFormat(testPhone));
-		int start = 5;
-		int end = 8;
-		
-		String[] ttt = testGetDifference(start,end);
-		for(String a :ttt){
-			System.out.println("a="+a+"########");
-		}
-		
+//		int start = 5;
+//		int end = 8;
+//		
+//		String[] ttt = testGetDifference(start,end);
+//		for(String a :ttt){
+//			System.out.println("a="+a+"########");
+//		}
+		Integer i = 3;
+		String s = "3";
+		System.out.println(check(i));
+		System.out.println(check(s));
 	}
 
 }

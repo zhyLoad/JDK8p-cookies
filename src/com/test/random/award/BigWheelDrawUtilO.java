@@ -64,7 +64,6 @@ public class BigWheelDrawUtilO {
     public static WchatLotteryDomainO generateAward1(int maxLimit) {
     	long random = randomnum(0, maxLimit);
 		int stepTotal = 0;
-		List<String> aList = new ArrayList();
       //probability ->key 是奖品id ->prod是奖品权重
 		for(WchatLotteryDomainO wchatLotteryDomainO : initDrawList)
 		{

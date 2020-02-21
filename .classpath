@@ -16,5 +16,7 @@
 	<classpathentry kind="lib" path="libs/apktool_2.3.4.jar"/>
 	<classpathentry kind="lib" path="libs/commons-codec-1.11.jar"/>
 	<classpathentry kind="lib" path="libs/zookeeper-3.4.6.jar"/>
+	<classpathentry kind="lib" path="libs/httpclient-4.3.6.jar"/>
+	<classpathentry kind="lib" path="libs/httpcore-4.4.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

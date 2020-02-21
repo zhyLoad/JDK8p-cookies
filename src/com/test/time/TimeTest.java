@@ -3,6 +3,8 @@
  */
 package com.test.time;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -42,12 +44,23 @@ public class TimeTest {
 		System.out.println(nowZonedDateTime.toInstant());
 		System.out.println(nowZonedDateTime.toLocalDateTime());
 	}
+	
+    public static Instant transferDateStr2Instant(String dateStr){
+        try {
+            return new SimpleDateFormat("yyyyMMddHHmmss").parse(dateStr).toInstant();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testNow();
+//		testNow();
+		Instant in = transferDateStr2Instant("20191223131532");
+		System.out.println(in.toString());
 	}
 
 }
