@@ -20,7 +20,7 @@ import org.apache.commons.codec.binary.Base64;
 
 /**
  * @author 10007610
- * 
+ *  用自签名的RSA证书实现签名验签
  * 
  * 
  * 用JDK的keytool生成公私钥对： 
