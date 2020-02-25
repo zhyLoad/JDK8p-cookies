@@ -3,12 +3,13 @@
  */
 package com.test.net.pay;
 
-import CCBSign.RSASig;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.apache.commons.codec.binary.Base64;
+
+import CCBSign.RSASig;
 
 /**
  * @author 10007610

@@ -18,6 +18,7 @@
 	<classpathentry kind="lib" path="libs/zookeeper-3.4.6.jar"/>
 	<classpathentry kind="lib" path="libs/httpclient-4.3.6.jar"/>
 	<classpathentry kind="lib" path="libs/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/Git_local/java/JDK8p-cookies/libs/pay/netpay.jar" sourcepath="libs/pay/netpay.jar"/>
 	<classpathentry kind="lib" path="libs/pay/netpay.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
