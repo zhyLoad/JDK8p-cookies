@@ -17,7 +17,7 @@ import javax.crypto.Cipher;
 import org.apache.commons.codec.binary.Base64;
 
 /**
- * pem文件生成过程：环境-centos， yum 安装openssl
+ * pem文件生成过程：环境-centos7， yum 安装openssl
  * 
  * 1）生成私钥证书
  * openssl genrsa -out rsa_private_key.pem 1024
@@ -140,7 +140,7 @@ public class RSASignAndVerifyBySHA1 {
     public static PrivateKey getPrivateKeyFromPem(String pemFilePath) throws Exception {
         byte[] b = getBytesContentFromPemFile(pemFilePath);
         // 生成私匙  
-        KeyFactory kf = KeyFactory.getInstance("RSA");
+        KeyFactory kf = KeyFactory.getInstance(KEY_ALGORITHM);
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(b);
         PrivateKey privateKey = kf.generatePrivate(keySpec);
         return privateKey;
@@ -154,7 +154,7 @@ public class RSASignAndVerifyBySHA1 {
      */
     public static PublicKey getPublicKeyFromPem(String pemFilePath) throws Exception {
         byte[] b = getBytesContentFromPemFile(pemFilePath);
-        KeyFactory kf = KeyFactory.getInstance("RSA");
+        KeyFactory kf = KeyFactory.getInstance(KEY_ALGORITHM);
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(b);
         PublicKey pubKey = kf.generatePublic(keySpec);
         return pubKey;
@@ -202,6 +202,7 @@ public class RSASignAndVerifyBySHA1 {
 			
 			PublicKey publicKey = getPublicKeyFromPem(publicKeyPemPath);
 			boolean verifyResult = verify(content.getBytes(), publicKey, signResult);
+//			boolean verifyResult = verify((content+"123456").getBytes(), publicKey, signResult);//test not pass verify
 			System.out.println("verify result is \n"+verifyResult);
 			
 		} catch (Exception e) {
