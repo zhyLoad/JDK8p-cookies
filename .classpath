@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="libs/httpcore-4.4.4.jar"/>
 	<classpathentry kind="lib" path="D:/Git_local/java/JDK8p-cookies/libs/pay/netpay.jar" sourcepath="libs/pay/netpay.jar"/>
 	<classpathentry kind="lib" path="libs/pay/netpay.jar"/>
+	<classpathentry kind="lib" path="libs/pay/bcprov-jdk15on-1.64.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
